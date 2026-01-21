@@ -1,0 +1,293 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+
+% Geometry settings
+\geometry{
+  top=1.0in,
+  bottom=1.0in,
+  left=1.25in,
+  right=1.0in
+}
+
+% Line spacing
+\setstretch{1.5}
+
+% Title formatting
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\begin{document}
+
+% -------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \textbf{\Huge VERITAS AI: AN AI-POWERED INTERVIEWER}
+        
+        \vspace{2cm}
+        
+        \textbf{\large Report submitted to}\\
+        \textbf{\large Indian Institute of Information Technology Agartala}\\
+        \textbf{\large for the award of the degree of}\\
+        \textbf{\large Bachelor of Technology}
+        
+        \vspace{1.5cm}
+        
+        \textit{by}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Saunak Das (22UICS138)}\\
+        \textbf{Nikhil Kumar Singh (22UICS136)}\\
+        \textbf{Vamshi Naik (22UICS182)}
+        
+        \vspace{1.5cm}
+        
+        \textit{Under the Guidance of}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Syeda Zeenat}\\
+        \textit{and}\\
+        \textbf{Sushmita Sharma}
+        
+        \vspace{2cm}
+        
+        % \includegraphics[width=0.3\textwidth]{./logo.png} % Placeholder for logo
+        \vspace{3cm} % Space for logo
+        
+        \textbf{COMPUTER SCIENCE \& ENGINEERING DEPARTMENT}\\
+        \textbf{INDIAN INSTITUTE OF INFORMATION TECHNOLOGY AGARTALA}\\
+        \textbf{INDIA-799046}\\
+        \textbf{\today}
+        
+    \end{center}
+\end{titlepage}
+
+% -------------------------------------------------------------------
+% CERTIFICATE
+% -------------------------------------------------------------------
+\newpage
+\begin{center}
+    \textbf{\Large CERTIFICATE}
+\end{center}
+\vspace{1cm}
+
+This is to certify that the project report entitled \textbf{``Veritas AI: An AI-Powered Interviewer''} submitted by \textbf{Saunak Das (22UICS138)}, \textbf{Nikhil Kumar Singh (22UICS136)}, and \textbf{Vamshi Naik (22UICS182)} in partial fulfillment of the requirements for the award of the degree of \textbf{Bachelor of Technology} in \textbf{Computer Science \& Engineering} at \textbf{Indian Institute of Information Technology Agartala} is an authentic work carried out by them under our supervision and guidance.
+
+\vspace{3cm}
+
+\begin{minipage}{0.45\textwidth}
+    \begin{flushleft}
+        \textbf{Syeda Zeenat}\\
+        Project Supervisor\\
+        IIIT Agartala
+    \end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \begin{flushright}
+        \textbf{Sushmita Sharma}\\
+        Project Supervisor\\
+        IIIT Agartala
+    \end{flushright}
+\end{minipage}
+
+% -------------------------------------------------------------------
+% ACKNOWLEDGEMENT
+% -------------------------------------------------------------------
+\newpage
+\begin{center}
+    \textbf{\Large ACKNOWLEDGEMENT}
+\end{center}
+\vspace{1cm}
+
+We wish to place on record our sincere appreciation and deep gratitude to our project supervisors, \textbf{Syeda Zeenat} and \textbf{Sushmita Sharma}, for their astute guidance, constructive criticism, and constant encouragement throughout the duration of this project. Their expertise has been a beacon of light in the development of Veritas AI.
+
+We are also indebted to the faculty and staff of the Computer Science \& Engineering Department at IIIT Agartala for providing the necessary infrastructure and academic environment that fostered our learning and development.
+
+Lastly, we thank our parents and peers for their moral support and patience, which motivated us to strive for excellence in this endeavor.
+
+\vspace{2cm}
+\begin{flushright}
+    Saunak Das\\
+    Nikhil Kumar Singh\\
+    Vamshi Naik
+\end{flushright}
+
+% -------------------------------------------------------------------
+% ABSTRACT
+% -------------------------------------------------------------------
+\newpage
+\begin{center}
+    \textbf{\Large ABSTRACT}
+\end{center}
+\vspace{1cm}
+
+In the contemporary recruitment landscape, organizations grapple with the logistical complexities of high-volume hiring, while candidates often face anxiety and a lack of constructive feedback. To mitigate these challenges, we present \textbf{Veritas AI}, an autonomous interview simulation platform. By harnessing the capabilities of state-of-the-art Large Language Models (LLMs) and low-latency voice synthesis, Veritas AI orchestrates realistic, spoken technical assessments.
+
+The system mimics a human recruiter's adaptability, probing candidate responses in real-time and delivering granular, objective performance metrics. Unlike traditional static assessment tools, Veritas AI creates a dynamic conversational environment using Vapi for voice orchestration and HeyGen for visual presence. This report details the development of the platform, highlighting its robust architecture built on Next.js and Supabase, ultimately offering a scalable solution to modernize talent acquisition and democratize interview preparation.
+
+% -------------------------------------------------------------------
+% TABLE OF CONTENTS
+% -------------------------------------------------------------------
+\newpage
+\tableofcontents
+
+% -------------------------------------------------------------------
+% CHAPTER 1: INTRODUCTION
+% -------------------------------------------------------------------
+\newpage
+\chapter{Introduction}
+
+\section{Overview}
+The domain of Human Resource Management is undergoing a paradigm shift driven by Artificial Intelligence. Conventional hiring workflows are often bottlenecked by manual screening processes that are both labor-intensive and susceptible to cognitive biases. \textbf{Veritas AI} emerges as a technological intervention designed to automate the preliminary stages of technical interviewing, ensuring consistency and efficiency.
+
+\section{Problem Statement}
+A significant gap exists in the recruitment ecosystem: candidates lack accessible avenues for realistic, voice-based interview practice, while employers struggle to scale their screening processes without compromising quality. Existing tools often fail to replicate the nuance of a spoken dialogue, relying instead on static text inputs or asynchronous video recordings. There is a critical need for a synchronous, interactive system capable of evaluating technical competency through natural conversation.
+
+\section{Key Features}
+Veritas AI addresses these needs through several core capabilities:
+\begin{itemize}
+    \item \textbf{Autonomous Interviewing}: Deploys AI agents to conduct full-length technical interviews without human intervention.
+    \item \textbf{Conversational Intelligence}: Utilizes advanced NLP to understand context, follow up on answers, and maintain a natural dialogue flow.
+    \item \textbf{Instant Assessment}: Provides immediate, data-driven feedback on soft skills and technical accuracy post-interview.
+    \item \textbf{Centralized Dashboard}: Offers a unified interface for users to track performance history and schedule new sessions.
+    \item \textbf{Robust Security}: Implements secure authentication protocols via Supabase to protect user data.
+\end{itemize}
+
+% -------------------------------------------------------------------
+% CHAPTER 2: LITERATURE REVIEW
+% -------------------------------------------------------------------
+\newpage
+\chapter{Literature Review}
+
+\section{Evolution of Recruitment Systems}
+The trajectory of recruitment technology has moved from paper-based resumes to digital Applicant Tracking Systems (ATS). While ATS solved the problem of resume storage and keyword filtering, the qualitative assessment of candidates remained a manual bottleneck. The current wave of innovation focuses on "Intelligent Recruitment," where AI is not just a filter but an active participant in the evaluation process.
+
+\section{Existing Solutions vs. Veritas AI}
+Current market solutions largely fall into two categories: coding platforms (e.g., LeetCode, HackerRank) which assess raw coding skills but ignore communication, and asynchronous video interview tools (e.g., HireVue) which record answers for later human review. Veritas AI introduces a third category: \textbf{Synchronous AI Interviewers}. By integrating real-time voice synthesis with generative AI, it bridges the gap between technical assessment and behavioral interview practice, offering a holistic evaluation mechanism that was previously unavailable in automated systems.
+
+% -------------------------------------------------------------------
+% CHAPTER 3: PROPOSED APPLICATION
+% -------------------------------------------------------------------
+\newpage
+\chapter{Proposed Application}
+
+\section{Architecture Design}
+Veritas AI is engineered on a modular, microservices-inspired architecture to ensure scalability and maintainability. The application logic is decoupled into three primary layers: the \textbf{Presentation Layer} (Next.js Frontend), the \textbf{Service Layer} (Vapi AI \& OpenAI integration), and the \textbf{Data Layer} (Supabase PostgreSQL). This separation of concerns allows for independent scaling of components.
+
+\section{System Modules}
+\subsection{User Identity Management}
+We leverage Supabase Auth to provide a seamless and secure login experience. This module manages session tokens and protects private routes, ensuring that interview records are accessible only to authorized users.
+
+\subsection{Conversational Core}
+The Conversational Core is the engine of Veritas AI. It acts as a bridge between the user's voice input and the LLM's intelligence. Audio streams are processed in real-time, transcribed, and fed into the language model. The model's textual response is then synthesized back into speech with minimal latency, creating the illusion of a fluid human conversation.
+
+\subsection{Analytics & Feedback Engine}
+Upon the conclusion of an interview, the Analytics Engine processes the transcript. It applies specific rubrics to evaluate the candidate's responses against expected technical standards. The output is a comprehensive report card detailing strengths, weaknesses, and an overall proficiency score.
+
+\section{Database Schema}
+The data persistence layer is built on PostgreSQL. The schema is normalized to ensure data integrity:
+\begin{itemize}
+    \item \textbf{profiles}: Extends auth data with user-specific attributes.
+    \item \textbf{mock\_interviews}: Stores metadata for each session (job role, tech stack, duration).
+    \item \textbf{user\_answers}: Archives specific Q\&A pairs and the associated AI-generated feedback for granular review.
+\end{itemize}
+
+% -------------------------------------------------------------------
+% CHAPTER 4: IMPLEMENTATION
+% -------------------------------------------------------------------
+\newpage
+\chapter{Implementation}
+
+\section{Frontend Engineering}
+The client-side application is constructed using the \textbf{Next.js 14} framework, leveraging Server Components for improved performance. Styling is handled via \textbf{Tailwind CSS}, which facilitates a rapid, utility-first design approach. We incorporated \textbf{Shadcn UI} to implement accessible and aesthetically pleasing interface elements such as dialogs, cards, and navigation menus.
+
+\section{AI & Voice Orchestration}
+\subsection{Vapi Integration}
+The integration of \textbf{Vapi} was critical for achieving low-latency voice interaction. We configured the Vapi web SDK to handle microphone streams and manage the turn-taking logic during the conversation. This eliminates the awkward pauses often associated with voicebots.
+
+\subsection{Visual Avatar}
+To humanize the AI, we explored the integration of streaming avatars (e.g., HeyGen). This component renders a lip-synced digital human, providing visual cues that simulate eye contact and engagement, thereby reducing the "uncanny valley" effect.
+
+\section{Backend Services}
+The backend logic is primarily serverless, utilizing Next.js API routes. These endpoints handle secure communication with the database and external AI services. For instance, the feedback generation process is triggered via a secure API call that aggregates the interview context and prompts the LLM for a structured evaluation.
+
+% -------------------------------------------------------------------
+% CHAPTER 5: TECH STACK USED
+% -------------------------------------------------------------------
+\newpage
+\chapter{Tech Stack Used}
+
+The robust functionality of Veritas AI is supported by a modern technology stack:
+
+\section{Frontend}
+\begin{itemize}
+    \item \textbf{Next.js}: Chosen for its hybrid rendering capabilities and file-system based routing.
+    \item \textbf{React}: The foundational library for building component-based UIs.
+    \item \textbf{Tailwind CSS}: Enables rapid UI prototyping with a consistent design system.
+    \item \textbf{Lucide React}: Provides a lightweight and consistent icon set.
+\end{itemize}
+
+\section{Backend \& Infrastructure}
+\begin{itemize}
+    \item \textbf{Supabase}: Acts as a Backend-as-a-Service (BaaS), providing database, auth, and real-time subscriptions.
+    \item \textbf{PostgreSQL}: A powerful, open-source object-relational database system.
+\end{itemize}
+
+\section{AI Services}
+\begin{itemize}
+    \item \textbf{Vapi}: The core voice orchestration platform.
+    \item \textbf{OpenAI (GPT-4o)}: The intelligence layer responsible for understanding queries and generating context-aware responses.
+    \item \textbf{HeyGen}: Used for generating realistic AI video avatars.
+\end{itemize}
+
+% -------------------------------------------------------------------
+% CHAPTER 6: CONCLUSION AND FUTURE WORK
+% -------------------------------------------------------------------
+\newpage
+\chapter{Conclusion and Future Work}
+
+\section{Conclusion}
+Veritas AI stands as a testament to the transformative power of generative AI in professional development. By successfully integrating voice synthesis, natural language processing, and real-time interactivity, the platform offers a unique solution to the age-old problem of interview preparation. It empowers candidates to practice in a safe, judgment-free environment while offering recruiters a glimpse into the future of automated, unbiased screening.
+
+\section{Future Work}
+The roadmap for Veritas AI includes several ambitious features:
+\begin{itemize}
+    \item \textbf{Multilingual Capabilities}: Expanding the voice model to support regional languages for broader accessibility.
+    \item \textbf{Behavioral Analysis}: Implementing sentiment analysis to evaluate candidate confidence and stress levels via voice intonation.
+    \item \textbf{Live Coding Sandbox}: Embedding a code editor to allow the AI to conduct technical coding rounds with real-time execution checks.
+    \item \textbf{Enterprise Integration}: Developing APIs to sync interview results directly with corporate HR systems (HRMS).
+\end{itemize}
+
+% -------------------------------------------------------------------
+% REFERENCES
+% -------------------------------------------------------------------
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{nextjs}
+Vercel. "Next.js Documentation." \url{https://nextjs.org/docs}. Accessed Dec 2025.
+
+\bibitem{supabase}
+Supabase Inc. "Supabase Documentation." \url{https://supabase.com/docs}. Accessed Dec 2025.
+
+\bibitem{openai}
+OpenAI. "API Reference & Documentation." \url{https://platform.openai.com/docs}. Accessed Dec 2025.
+
+\bibitem{vapi}
+Vapi. "Vapi AI Voice API Documentation." \url{https://vapi.ai/docs}. Accessed Dec 2025.
+
+\end{thebibliography}
+
+\end{document}
